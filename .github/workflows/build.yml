@@ -16,11 +16,11 @@ jobs:
         - snapshot
     steps:
     - name: Install Emacs
-      uses: purcell/setup-emacs@master
+      uses: jcs090218/setup-emacs@master
       with:
         version: ${{ matrix.emacs_version }}
-    - name: Install Cask
-      uses: conao3/setup-cask@master
+    - name: Install Eask
+      uses: emacs-eask/setup-cask@master
       with:
         version: 'snapshot'
     - name: Install Aspell
@@ -30,8 +30,8 @@ jobs:
       with:
         repository: Alexander-Miller/treemacs
         path: treemacs
-    - name: Cask Install
-      run: cask --path treemacs install
+    - name: Eask Install
+      run: eask install-deps --dev
     - name: Checkdoc
       run: make -C treemacs checkdoc
     - name: Compile
